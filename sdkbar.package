@@ -1,0 +1,27 @@
+
+sdkbox.copy_files(['app'], PLUGIN_PATH, ANDROID_STUDIO_PROJECT_DIR)
+#sdkbox.copy_files(['ios'], PLUGIN_PATH, IOS_PROJECT_DIR)
+sdkbox.copy_files(['Classes/MediationSuite.cpp', 'Classes/MediationSuite.h', 'Classes/MediationSuite.hpp', 'Classes/MediationSuite.mm'], PLUGIN_PATH, COCOS_CLASSES_DIR)
+sdkbox.copy_files(['ios/MDFInternationalization.framework', 'ios/MDFTextAccessibility.framework', 'ios/MaterialComponents.framework', 'ios/GoogleMobileAdsMediationTestSuite.framework', 'ios/GoogleMobileAdsMediationTestSuite.bundle'], PLUGIN_PATH, IOS_PROJECT_DIR)
+
+#sdkbox.android_add_static_libraries(['admob'])
+#sdkbox.android_add_calls(['import-module, ./admob'])
+sdkbar.gradle_dependencies(["compile 'com.google.android.ads:mediation-test-suite:0.9.2'"])
+
+sdkbox.xcode_add_sources(['MediationSuite.mm'])
+sdkbox.xcode_add_frameworks(['MDFInternationalization.framework', 'MDFTextAccessibility.framework', 'MaterialComponents.framework', 'GoogleMobileAdsMediationTestSuite.framework', 'GoogleMobileAdsMediationTestSuite.bundle'])
+
+sdkbar.appDelegateInject({
+    'marker': SDKBOX_PACKAGE_NAME,
+    'android': {
+         'include': 'MediationSuite.hpp',
+         'function': 'register_all_mediationsuite_framework'
+    },
+    'ios': {
+         'include': 'MediationSuite.h',
+         'function': 'register_all_mediationsuite_framework'
+    }
+})
+
+sdkbox.android_add_sources(['../../Classes/MediationSuite.cpp'])
+
