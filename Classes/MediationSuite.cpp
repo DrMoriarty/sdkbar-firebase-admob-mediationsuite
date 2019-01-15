@@ -60,5 +60,5 @@ void register_all_mediationsuite_framework(JSContext* cx, JS::HandleObject obj) 
     JS::RootedObject ns(cx);
     get_or_create_js_obj(cx, obj, "mediationsuite", &ns);
 
-    JS_DefineFunction(cx, ns, "launch_test_suite", jsb_admob_launch_test_suite, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
+    JS_DefineFunction(cx, ns, "launch_test_suite", jsb_mediationsuite_launch_test_suite, 0, JSPROP_ENUMERATE | JSPROP_PERMANENT);
 }

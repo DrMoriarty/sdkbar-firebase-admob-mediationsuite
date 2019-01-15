@@ -27,7 +27,7 @@ static void printLog(const char* str) {
 
 static bool jsb_mediationsuite_launch_test_suite(JSContext *cx, uint32_t argc, jsval *vp)
 {
-    printLog("jsb_admob_launch_test_suite");
+    printLog("jsb_mediationsuite_launch_test_suite");
     JS::CallArgs args = JS::CallArgsFromVp(argc, vp);
     JS::RootedObject obj(cx, args.thisv().toObjectOrNull());
     JS::CallReceiver rec = JS::CallReceiverFromVp(vp);
